@@ -30,4 +30,13 @@ public class CocktailRepleEntity {
     @JoinColumn(name = "cockIdx")
     private CocktailEntity cocktailEntity;
 
+    @Builder
+    public CocktailRepleEntity(String cRepleContent, UserEntity userEntity, CocktailEntity cocktailEntity){
+        this.cocktailEntity = cocktailEntity;
+        this.userEntity = userEntity;
+        this.cRepleContent = cRepleContent;
+        this.cRepleCreateDate = LocalDateTime.now();
+
+    }
+
 }

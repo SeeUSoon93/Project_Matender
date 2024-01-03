@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +24,7 @@ public class CocktailEntity {
     private String cockCategory;
     private LocalDateTime cockCreateDate;
     private int cockAlc;
+    private int cockLike;
     private String cockBase;
     @Lob
     private String cockContent;
@@ -37,11 +39,22 @@ public class CocktailEntity {
     private List<CocktailRepleEntity> cocktailRepleEntityList;
 
     @OneToMany(mappedBy = "cocktailEntity", cascade = CascadeType.REMOVE)
-    private List<RecommendEntity> recommendEntityList;
-
-    @OneToMany(mappedBy = "cocktailEntity", cascade = CascadeType.REMOVE)
     private List<BookmarkEntity> bookmarkEntityList;
 
     @OneToMany(mappedBy = "cocktailEntity", cascade = CascadeType.REMOVE)
     private List<IngredientEntity> ingredientEntityList;
+
+    @Builder
+    public CocktailEntity(String cockTitle, String cockCategory, String cockContent, int cockAlc,
+    String cockRecipe, String cockBase, UserEntity userEntity){
+        this.cockTitle = cockTitle;
+        this.cockCategory = cockCategory;
+        this.cockAlc =cockAlc;
+        this.cockRecipe = cockRecipe;
+        this.cockBase = cockBase;
+        this.cockCreateDate = LocalDateTime.now();
+        this.userEntity = userEntity;
+        this.cockContent = cockContent;
+
+    }
 }

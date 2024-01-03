@@ -30,4 +30,11 @@ public class BoardRepleEntity {
     @JoinColumn(name = "bdIdx")
     private BoardEntity boardEntity;
 
+    @Builder
+    public BoardRepleEntity(UserEntity userEntity, BoardEntity boardEntity, String bRepleContent){
+        this.userEntity = userEntity;
+        this.boardEntity = boardEntity;
+        this.bRepleContent = bRepleContent;
+        this.bRepleCreateDate = LocalDateTime.now();
+    }
 }

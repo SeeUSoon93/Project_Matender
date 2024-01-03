@@ -24,5 +24,14 @@ public class ImgEntity {
     private String bdIdx;
     private String cockIdx;
 
+    @Builder
+    public ImgEntity(String imgPath, String bdIdx, String cockIdx){
+        this.bdIdx = bdIdx;
+        this.cockIdx = cockIdx;
+        this.imgCreateDate = LocalDateTime.now();
+        this.imgPath = imgPath;
+
+    }
+
 
 }

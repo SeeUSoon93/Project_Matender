@@ -23,4 +23,11 @@ public class IngredientEntity {
     @JoinColumn(name = "cockIdx")
     private CocktailEntity cocktailEntity;
 
+    @Builder
+    public IngredientEntity(String igName, String igVolume, CocktailEntity cocktailEntity){
+        this.cocktailEntity = cocktailEntity;
+        this.igName = igName;
+        this.igVolume = igVolume;
+
+    }
 }

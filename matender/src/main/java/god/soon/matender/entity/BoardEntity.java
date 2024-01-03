@@ -32,4 +32,13 @@ public class BoardEntity {
 
     @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE)
     private List<BoardRepleEntity> boardRepleEntityList;
+
+    @Builder
+    public BoardEntity(String bdTitle, String bdContent, UserEntity userEntity){
+        this.bdTitle = bdTitle;
+        this.bdContent = bdContent;
+        this.bdCreateDate=LocalDateTime.now();
+        this.userEntity = userEntity;
+
+    }
 }

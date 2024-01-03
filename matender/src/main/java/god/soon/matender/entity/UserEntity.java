@@ -18,24 +18,29 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userIdx;
-    private String username;
+    private String nickname;
     private String email;
     private String gender;
-    private String age;
+    private int age;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.REMOVE)
     private List<BoardEntity> BoardList;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.REMOVE)
-    private List<CocktailEntity> cocktailEntityList;
+    private List<CocktailEntity> cocktailList;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.REMOVE)
-    private List<BoardRepleEntity> RepleList;
-
-    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.REMOVE)
-    private List<RecommendEntity> RecommendList;
+    private List<BoardRepleEntity> boardRepleList;
 
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.REMOVE)
     private List<BookmarkEntity> BookmarkList;
+
+    @Builder
+    public UserEntity(String nickname, String email, String gender, int age) {
+        this.email = email;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.age = age;
+    }
 
 }
